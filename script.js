@@ -25,12 +25,20 @@ const updateName = (element) => {
 searchInputElem.value =''
  
  for(let option of options.children){
-    option.innerText === element.textContent ? option.classList.add('selected') : option.classList.remove('selected')
+ option.innerText === element.textContent ? option.classList.add('selected') : option.classList.remove('selected')
  }
 
 wrapperElem.classList.remove('active')
 selectBtn.firstElementChild.innerText = element.textContent;
 }
+
+searchInputElem.addEventListener('keyup' , () =>{
+    const SearchedWords = searchInputElem.value.toLowerCase()
+    const TheDesiredCountry = countries.filter(country => country.toLowerCase().startsWith(SearchedWords)).map( country =>
+    `<li onclick='updateName(this)'>${country}</li>`).join('')
+
+    options.innerHTML= TheDesiredCountry ? TheDesiredCountry : `<p style="margin-top: 10px;">Oops! Country Not Found</p>`
+})
 
 selectBtn.addEventListener('click' , () =>{ wrapperElem.classList.toggle('active')});
 window.addEventListener('load' ,addCountries);
