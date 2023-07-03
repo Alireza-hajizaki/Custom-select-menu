@@ -7,7 +7,9 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  background: #4285f4;
+  /* background: #21252c; */
+  background-image: url('./image/Purpink.jpg');
+  max-width: 100%;
 }
 ::selection{
   color: #fff;
